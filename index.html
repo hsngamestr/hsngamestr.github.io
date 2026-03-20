@@ -1,130 +1,234 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Crafted Earth | HsnGames</title>
+    <title>HSNGAMES | Premium Interactive Entertainment</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
-        /* Temel Stiller (Karanlık Mod) */
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #0f172a; /* Çok Koyu Lacivert/Siyah */
-            color: #f1f5f9; /* Çok Açık Gri/Beyaz */
+        :root {
+            --primary: #00d2ff;
+            --secondary: #3a7bd5;
+            --bg-dark: #020617;
+            --glass: rgba(255, 255, 255, 0.03);
+            --border: rgba(255, 255, 255, 0.08);
+        }
+
+        body, html {
             margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-dark);
+            color: white;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        .bg-animate {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 50% 50%, #111827 0%, #020617 100%);
+            z-index: -1;
+        }
+
+        .bg-blob {
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            filter: blur(180px);
+            border-radius: 50%;
+            opacity: 0.12;
+            animation: move 25s infinite alternate ease-in-out;
+        }
+
+        @keyframes move {
+            0% { transform: translate(-15%, -15%); }
+            100% { transform: translate(25%, 25%); }
+        }
+
+        nav {
+            padding: 25px 10%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border);
+            backdrop-filter: blur(12px);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.4rem;
+            letter-spacing: 3px;
+            color: white;
+            text-decoration: none;
+        }
+
+        .hero {
             display: flex;
             flex-direction: column;
             align-items: center;
-            min-height: 100vh;
-        }
-
-        /* Ana Konteyner */
-        .container {
-            max-width: 800px;
-            width: 90%;
-            margin-top: 5vh;
+            padding: 100px 10% 60px;
             text-align: center;
-            padding: 2rem;
-            background-color: #1e293b; /* Koyu Gri/Mavi */
-            border-radius: 20px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-            border: 1px solid #334155; /* Hafif Sınır Çizgisi */
         }
 
-        /* Başlıklar */
-        h1 {
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
-            color: #f1f5f9;
-        }
-
-        h2.studio-name {
-            font-size: 1.2rem;
-            font-weight: 400;
-            color: #38bdf8; /* Açık Mavi (Vurgu Rengi) */
-            margin-top: 0;
-            margin-bottom: 2rem;
+        .tagline {
             text-transform: uppercase;
-            letter-spacing: 2px;
+            letter-spacing: 4px;
+            font-size: 0.7rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+            font-weight: 600;
+            opacity: 0.9;
         }
 
-        /* Oyun Görseli */
-        .game-image {
-            max-width: 100%;
-            height: auto;
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
-            margin-bottom: 2rem;
-            border: 2px solid #334155;
+        h1 {
+            font-size: clamp(2.5rem, 7vw, 4.5rem);
+            margin: 0;
+            font-weight: 700;
+            line-height: 1;
+            letter-spacing: -3px;
+            background: linear-gradient(to bottom, #fff 60%, #94a3b8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
-        /* Oyun Açıklaması */
-        .description {
-            font-size: 1.1rem;
-            line-height: 1.7;
-            color: #cbd5e1; /* Orta Gri */
-            margin-bottom: 2.5rem;
-            padding: 0 1rem;
+        .game-card {
+            margin-top: 80px;
+            width: 100%;
+            max-width: 1100px;
+            background: var(--glass);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            overflow: hidden;
+            transition: all 0.5s ease;
         }
 
-        /* Play Store Butonu */
-        .play-store-btn {
-            display: inline-flex;
-            align-items: center;
+        .game-card:hover {
+            border-color: rgba(0, 210, 255, 0.25);
+            box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.5);
+        }
+
+        .game-details {
+            padding: 60px;
+            text-align: left;
+            display: flex;
+            flex-direction: column;
             justify-content: center;
-            gap: 10px;
-            padding: 15px 30px;
-            background-color: #38bdf8; /* Vurgu Rengi */
-            color: #0f172a; /* Koyu Metin */
+        }
+
+        .game-visual {
+            background: url('crafted_earth_image.png') center/cover;
+            min-height: 500px;
+            transition: transform 0.8s ease;
+        }
+
+        .game-card:hover .game-visual {
+            transform: scale(1.05);
+        }
+
+        .cta-button {
+            margin-top: 40px;
+            padding: 18px 45px;
+            background: #fff;
+            color: #000;
             text-decoration: none;
-            border-radius: 12px;
-            font-weight: bold;
-            font-size: 1.1rem;
-            transition: transform 0.2s, background-color 0.2s;
-            box-shadow: 0 4px 10px rgba(56, 189, 248, 0.3);
-        }
-
-        .play-store-btn:hover {
-            background-color: #0ea5e9; /* Daha Koyu Mavi */
-            transform: scale(1.03);
-        }
-
-        /* Google Play İkonu (SVG) */
-        .play-icon {
-            width: 24px;
-            height: 24px;
-            fill: #0f172a;
-        }
-
-        /* Footer */
-        .footer {
-            margin-top: auto;
-            padding: 2rem 0;
+            border-radius: 8px;
+            font-weight: 700;
             font-size: 0.9rem;
-            color: #64748b;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: 0.3s;
+            width: fit-content;
+        }
+
+        .cta-button:hover {
+            background: var(--primary);
+            color: #fff;
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(0, 210, 255, 0.3);
+        }
+
+        footer {
+            padding: 80px 10% 40px;
+            text-align: center;
+            color: #4b5563;
+            font-size: 0.7rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        @media (max-width: 900px) {
+            .game-card { grid-template-columns: 1fr; }
+            .game-visual { min-height: 350px; order: -1; }
+            h1 { font-size: 3rem; }
+            .game-details { padding: 40px; }
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <h2 class="studio-name">HsnGames</h2>
-        <h1>Crafted Earth</h1>
+    <div class="bg-animate"><div class="bg-blob"></div></div>
+
+    <nav>
+        <div class="logo">HSNGAMES</div>
+        <div style="font-size: 0.65rem; color: #6b7280; font-weight: 600; letter-spacing: 2px;">GLOBAL INTERACTIVE</div>
+    </nav>
+
+    <section class="hero">
+        <div id="tagline" class="tagline">Pushing the Limits of Entertainment</div>
+        <h1 id="main-title">Crafting Worlds,<br>Beyond Imagination.</h1>
         
-        <img src="crafted_earth_image.png" alt="Crafted Earth Oyun Görseli" class="game-image">
-
-        <div class="description">
-            <p>Kendi dünyanı inşa et, kaynakları yönet ve medeniyetini geliştir. Crafted Earth, strateji ve yaratıcılığı bir araya getiren benzersiz bir deneyim sunuyor. Hemen indir ve keşfetmeye başla!</p>
+        <div class="game-card">
+            <div class="game-details">
+                <h2 style="font-size: 3.2rem; margin: 0; font-weight: 700; letter-spacing: -1px;">Crafted Earth</h2>
+                <p id="game-desc" style="color: #9ca3af; line-height: 1.8; font-size: 1.1rem; margin-top: 25px;">Build and evolve your own world. From vast landscapes to complex civilizations, every choice determines the fate of your world.</p>
+                <a id="btn-text" href="https://play.google.com/store/apps/details?id=com.HSNGAMES.CraftedEarth" class="cta-button">Play Now</a>
+            </div>
+            <div class="game-visual"></div>
         </div>
+    </section>
 
-        <a href="https://play.google.com/store/apps/details?id=com.HSNGAMES.CraftedEarth" class="play-store-btn" target="_blank">
-            <svg class="play-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 0 1-.61-.924V2.739c0-.39.225-.747.609-.925zM14.5 12.707L18.466 16.673c.39.39 1.024.39 1.414 0l.293-.293a1 1 0 0 0 0-1.414l-3.966-3.966L14.5 12.707zM14.5 11.293l3.966-3.966 1.666 1.666c.39.39 1.024.39 1.414 0l.293-.293a1 1 0 0 0 0-1.414l-3.966-3.966L14.5 11.293zM3.609 1.814l10.891 10.891 3.966-3.966-10.891-10.891a1 1 0 0 0-1.414 0l-2.552 2.552zM3.61 22.186l10.89 10.89 3.966-3.966-10.89-10.89a1 1 0 0 0-1.414 0l-2.552 2.552z"/></svg>
-            Google Play'den İndir
-        </a>
-    </div>
+    <footer id="footer-text">
+        &copy; 2026 HSNGAMES INTERACTIVE ENTERTAINMENT. ALL RIGHTS RESERVED.
+    </footer>
 
-    <div class="footer">
-        © 2026 HsnGamesTR. Tüm hakları saklıdır.
-    </div>
+    <script>
+        const translations = {
+            tr: {
+                tagline: "Eğlencenin Sınırlarını Zorluyoruz",
+                mainTitle: "Sınırları Zorlayan Dünyalar,<br>Unutulmaz Deneyimler.",
+                gameDesc: "Kendi dünyanızı inşa edin ve geliştirin. Engin arazilerden karmaşık medeniyetlere kadar verdiğiniz her karar dünyanızın kaderini belirler.",
+                btnText: "HEMEN OYNA",
+                footer: "&copy; 2026 HSNGAMES INTERACTIVE. TÜM HAKLARI SAKLIDIR."
+            },
+            en: {
+                tagline: "Pushing the Limits of Entertainment",
+                mainTitle: "Crafting Worlds,<br>Beyond Imagination.",
+                gameDesc: "Build and evolve your own world. From vast landscapes to complex civilizations, every choice determines the fate of your world.",
+                btnText: "PLAY NOW",
+                footer: "&copy; 2026 HSNGAMES INTERACTIVE. ALL RIGHTS RESERVED."
+            }
+        };
+
+        const userLang = navigator.language || navigator.userLanguage; 
+        const lang = userLang.startsWith('tr') ? 'tr' : 'en';
+
+        document.getElementById('tagline').innerText = translations[lang].tagline;
+        document.getElementById('main-title').innerHTML = translations[lang].mainTitle;
+        document.getElementById('game-desc').innerText = translations[lang].gameDesc;
+        document.getElementById('btn-text').innerText = translations[lang].btnText;
+        document.getElementById('footer-text').innerHTML = translations[lang].footer;
+    </script>
 
 </body>
 </html>
