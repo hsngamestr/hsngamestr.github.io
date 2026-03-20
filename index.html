@@ -3,56 +3,103 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HsnGamesTR | Official Developer Page</title>
+    <title>Crafted Earth | HsnGamesTR</title>
     <style>
+        /* Temel Stiller (Karanlık Mod) */
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #0f172a;
-            color: #f8fafc;
+            background-color: #0f172a; /* Çok Koyu Lacivert/Siyah */
+            color: #f1f5f9; /* Çok Açık Gri/Beyaz */
+            margin: 0;
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
             min-height: 100vh;
-            margin: 0;
-            text-align: center;
         }
+
+        /* Ana Konteyner */
         .container {
+            max-width: 800px;
+            width: 90%;
+            margin-top: 5vh;
+            text-align: center;
             padding: 2rem;
-            background: #1e293b;
+            background-color: #1e293b; /* Koyu Gri/Mavi */
             border-radius: 20px;
             box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-            border: 1px solid #334155;
-            max-width: 500px;
-            width: 90%;
+            border: 1px solid #334155; /* Hafif Sınır Çizgisi */
         }
+
+        /* Başlıklar */
         h1 {
-            color: #38bdf8;
-            margin-bottom: 0.5rem;
             font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            color: #f1f5f9;
         }
-        p {
-            color: #94a3b8;
-            line-height: 1.6;
+
+        h2.studio-name {
+            font-size: 1.2rem;
+            font-weight: 400;
+            color: #38bdf8; /* Açık Mavi (Vurgu Rengi) */
+            margin-top: 0;
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
-        .btn {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 12px 24px;
-            background-color: #38bdf8;
-            color: #0f172a;
+
+        /* Oyun Görseli */
+        .game-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+            margin-bottom: 2rem;
+            border: 2px solid #334155;
+        }
+
+        /* Oyun Açıklaması */
+        .description {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: #cbd5e1; /* Orta Gri */
+            margin-bottom: 2.5rem;
+            padding: 0 1rem;
+        }
+
+        /* Play Store Butonu */
+        .play-store-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 15px 30px;
+            background-color: #38bdf8; /* Vurgu Rengi */
+            color: #0f172a; /* Koyu Metin */
             text-decoration: none;
-            border-radius: 10px;
+            border-radius: 12px;
             font-weight: bold;
+            font-size: 1.1rem;
             transition: transform 0.2s, background-color 0.2s;
+            box-shadow: 0 4px 10px rgba(56, 189, 248, 0.3);
         }
-        .btn:hover {
-            background-color: #0ea5e9;
-            transform: scale(1.05);
+
+        .play-store-btn:hover {
+            background-color: #0ea5e9; /* Daha Koyu Mavi */
+            transform: scale(1.03);
         }
+
+        /* Google Play İkonu (SVG) */
+        .play-icon {
+            width: 24px;
+            height: 24px;
+            fill: #0f172a;
+        }
+
+        /* Footer */
         .footer {
-            margin-top: 30px;
-            font-size: 0.8rem;
+            margin-top: auto;
+            padding: 2rem 0;
+            font-size: 0.9rem;
             color: #64748b;
         }
     </style>
@@ -60,11 +107,19 @@
 <body>
 
     <div class="container">
-        <h1>HsnGamesTR</h1>
-        <p>İzmir merkezli bağımsız oyun geliştiricisi.</p>
-        <p>Unity ve Unreal Engine ile hazırladığım yeni nesil bulmaca ve simülasyon oyunlarını keşfedin.</p>
+        <h2 class="studio-name">HsnGamesTR</h2>
+        <h1>Crafted Earth</h1>
         
-        <a href="https://play.google.com/store/apps/dev?id=SENIN_ID" class="btn">Play Store'da Görüntüle</a>
+        <img src="crafted_earth_image.png" alt="Crafted Earth Oyun Görseli" class="game-image">
+
+        <div class="description">
+            <p>Kendi dünyanı inşa et, kaynakları yönet ve medeniyetini geliştir. Crafted Earth, strateji ve yaratıcılığı bir araya getiren benzersiz bir deneyim sunuyor. Hemen indir ve keşfetmeye başla!</p>
+        </div>
+
+        <a href="https://play.google.com/store/apps/details?id=SENIN_OYUN_ID" class="play-store-btn" target="_blank">
+            <svg class="play-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 0 1-.61-.924V2.739c0-.39.225-.747.609-.925zM14.5 12.707L18.466 16.673c.39.39 1.024.39 1.414 0l.293-.293a1 1 0 0 0 0-1.414l-3.966-3.966L14.5 12.707zM14.5 11.293l3.966-3.966 1.666 1.666c.39.39 1.024.39 1.414 0l.293-.293a1 1 0 0 0 0-1.414l-3.966-3.966L14.5 11.293zM3.609 1.814l10.891 10.891 3.966-3.966-10.891-10.891a1 1 0 0 0-1.414 0l-2.552 2.552zM3.61 22.186l10.89 10.89 3.966-3.966-10.89-10.89a1 1 0 0 0-1.414 0l-2.552 2.552z"/></svg>
+            Google Play'den İndir
+        </a>
     </div>
 
     <div class="footer">
